@@ -4,6 +4,8 @@
   "description": "Frontend for the Toy Credential Issuer",
   "main": "index.js",
   "scripts": {
+    "start": "node src/app.js",
+    "start:ci": "API_BASE_URL=http://127.0.0.1:8020 REDIS_SESSION_URL= NODE_ENV=development node src/app.js",
     "lint": "eslint",
     "test": "jest"
   },
