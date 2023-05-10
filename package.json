@@ -4,11 +4,15 @@
   "description": "Frontend for the Toy Credential Issuer",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "eslint": "8.39.0",
+    "eslint-config-prettier": "8.8.0",
+    "eslint-plugin-prettier": "4.2.1",
     "prettier": "2.8.8"
   }
 }
