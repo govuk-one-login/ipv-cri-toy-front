@@ -4,6 +4,8 @@
   "description": "Frontend for the Toy Credential Issuer",
   "main": "index.js",
   "scripts": {
+    "start": "node src/app.js",
+    "start:ci": "API_BASE_URL=http://127.0.0.1:8020 REDIS_SESSION_URL= NODE_ENV=development node src/app.js",
     "lint": "eslint",
     "test": "jest"
   },
@@ -15,5 +17,17 @@
     "eslint-plugin-prettier": "4.2.1",
     "jest": "29.5.0",
     "prettier": "2.8.8"
+  },
+  "dependencies": {
+    "aws-sdk": "2.1376.0",
+    "axios": "^1.4.0",
+    "cfenv": "1.2.4",
+    "connect-dynamodb": "3.0.0",
+    "di-ipv-cri-common-express": "github:alphagov/di-ipv-cri-common-express#v0.0.36",
+    "dotenv": "16.0.3",
+    "express": "4.18.2",
+    "express-async-errors": "3.1.1",
+    "express-session": "1.17.3",
+    "hmpo-app": "3.0.1"
   }
 }
