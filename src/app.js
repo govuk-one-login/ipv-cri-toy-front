@@ -99,10 +99,11 @@ app.get("nunjucks").addGlobal("getContext", function () {
 
 setAPIConfig({
   app,
+  sessionPath: API.PATHS.SESSION,
   baseUrl: API.BASE_URL,
 });
 
-setOAuthPaths({ app, entryPointPath: APP.PATHS.KBV });
+setOAuthPaths({ app, entryPointPath: APP.PATHS.TOY });
 
 setGTM({
   app,

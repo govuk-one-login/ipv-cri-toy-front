@@ -3,6 +3,9 @@ require("dotenv").config();
 module.exports = {
   API: {
     BASE_URL: process.env.API_BASE_URL || "http://localhost:5055",
+    PATHS: {
+      SESSION: "/session",
+    },
   },
   APP: {
     BASE_URL: process.env.EXTERNAL_WEBSITE_HOST || "http://localhost:5050",
