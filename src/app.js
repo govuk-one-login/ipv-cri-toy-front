@@ -102,7 +102,7 @@ setAPIConfig({
   baseUrl: API.BASE_URL,
 });
 
-setOAuthPaths({ app, entryPointPath: APP.PATHS.KBV });
+setOAuthPaths({ app, entryPointPath: APP.PATHS.TOY });
 
 setGTM({
   app,
