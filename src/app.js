@@ -119,8 +119,4 @@ router.use("/oauth2", commonExpress.routes.oauth2);
 
 router.use("/toy", require("./app/toy"));
 
-router.use("^/$", (req, res) => {
-  res.render("index");
-});
-
 router.use(commonExpress.lib.errorHandling.redirectAsErrorToCallback);
