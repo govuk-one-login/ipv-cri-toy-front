@@ -1,0 +1,25 @@
+toy:
+  title: Beth yw eich hoff degan?
+  content: ""
+  hint: ""
+  legend: ""
+  label: ""
+  items:
+    dollshouse:
+      label: "Ty dol"
+      value: "dolls-house"
+      reveal: ""
+    jigsawpuzzle:
+      label: "Pos jig-so"
+      value: "jigsaw-puzzle"
+      reveal: ""
+    spinningtop:
+      label: "Top Troelli"
+      value: "spinning-top"
+      reveal: ""
+    trainset:
+      label: "Set trên"
+      value: "train-set"
+      reveal: ""
+  validation:
+    default: Dewiswch hoff degan os gwelwch yn dda

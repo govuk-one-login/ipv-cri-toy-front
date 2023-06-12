@@ -1,3 +1,5 @@
+const chooseFavourite = require("./controllers/choose-favourite");
+
 module.exports = {
   "/": {
     resetJourney: true,
@@ -6,6 +8,11 @@ module.exports = {
     next: "intro",
   },
   "/intro": {
+    next: "choose-favourite",
+  },
+  "/choose-favourite": {
+    controller: chooseFavourite,
+    fields: ["toy"],
     next: "/oauth2/callback",
   },
 };
