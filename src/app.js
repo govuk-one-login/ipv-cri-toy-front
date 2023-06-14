@@ -100,9 +100,11 @@ app.get("nunjucks").addGlobal("getContext", function () {
 setAPIConfig({
   app,
   baseUrl: API.BASE_URL,
+  sessionPath: API.PATHS.SESSION,
+  authorizationPath: API.PATHS.AUTHORIZATION,
 });
 
-setOAuthPaths({ app, entryPointPath: APP.PATHS.KBV });
+setOAuthPaths({ app, entryPointPath: APP.PATHS.TOY });
 
 setGTM({
   app,
@@ -118,9 +120,5 @@ router.use(setAxiosDefaults);
 router.use("/oauth2", commonExpress.routes.oauth2);
 
 router.use("/toy", require("./app/toy"));
-
-router.use("^/$", (req, res) => {
-  res.render("index");
-});
 
 router.use(commonExpress.lib.errorHandling.redirectAsErrorToCallback);

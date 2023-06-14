@@ -5,8 +5,17 @@
   "main": "index.js",
   "scripts": {
     "start": "node src/app.js",
-    "start:ci": "API_BASE_URL=http://127.0.0.1:8020 REDIS_SESSION_URL= NODE_ENV=development node src/app.js",
+    "start:ci": "API_BASE_URL=http://127.0.0.1:8050 REDIS_SESSION_URL= NODE_ENV=development node src/app.js",
+    "dev": "NODE_ENV=development nodemon src/app.js",
     "lint": "eslint",
+    "build": "yarn build:sass && yarn build:js && yarn copy-assets",
+    "build:js": "yarn build:js:application && yarn build:js:cookies && yarn build:js:all",
+    "build:js:all": "mkdir -p dist/public/javascripts; uglifyjs node_modules/govuk-frontend/govuk/all.js node_modules/hmpo-components/all.js --beautify -o dist/public/javascripts/all.js",
+    "build:js:application": "mkdir -p dist/public/javascripts; uglifyjs src/assets/javascripts/application.js  node_modules/di-ipv-cri-common-express/src/assets/javascript/application.js --beautify -o dist/public/javascripts/application.js",
+    "build:js:cookies": "mkdir -p dist/public/javascripts; uglifyjs node_modules/di-ipv-cri-common-express/src/assets/javascript/cookies.js --beautify -o dist/public/javascripts/cookies.js",
+    "build:js:minify": "uglifyjs src/assets/javascript/application.js -o src/assets/javascript/application.js -c -m && uglifyjs src/assets/javascript/cookies.js -o src/assets/javascript/cookies.js -c -m",
+    "build:sass": "rm -rf dist/public/style.css && sass --no-source-map src/assets/scss/application.scss dist/public/stylesheets/application.css --style compressed",
+    "copy-assets": "mkdir -p dist && copyfiles -u 1 src/**/*.njk dist/ src/locales/**/** dist/ && copyfiles -u 3 src/assets/javascript/*.js dist/public/scripts",
     "test": "jest",
     "test:browser": "cucumber-js --config test/browser/cucumber.js"
   },
