@@ -16,6 +16,7 @@
     "build:js:minify": "uglifyjs src/assets/javascript/application.js -o src/assets/javascript/application.js -c -m && uglifyjs src/assets/javascript/cookies.js -o src/assets/javascript/cookies.js -c -m",
     "build:sass": "rm -rf dist/public/style.css && sass --no-source-map src/assets/scss/application.scss dist/public/stylesheets/application.css --style compressed",
     "copy-assets": "mkdir -p dist && copyfiles -u 1 src/**/*.njk dist/ src/locales/**/** dist/ && copyfiles -u 3 src/assets/javascript/*.js dist/public/scripts",
+    "check-translation": "node node_modules/di-ipv-cri-common-express/scripts/checkTranslations.js",
     "test": "jest",
     "test:browser": "cucumber-js --config test/browser/cucumber.js"
   },
