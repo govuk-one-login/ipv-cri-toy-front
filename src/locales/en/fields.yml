@@ -1,0 +1,25 @@
+toy:
+  title: What is your favourite toy?
+  content: ""
+  hint: ""
+  legend: ""
+  label: ""
+  items:
+    dollshouse:
+      label: "Doll's House"
+      value: "dolls-house"
+      reveal: ""
+    jigsawpuzzle:
+      label: "Jigsaw Puzzle"
+      value: "jigsaw-puzzle"
+      reveal: ""
+    spinningtop:
+      label: "Spinning Top"
+      value: "spinning-top"
+      reveal: ""
+    trainset:
+      label: "Train set"
+      value: "train-set"
+      reveal: ""
+  validation:
+    default: Please choose a favourite toy
