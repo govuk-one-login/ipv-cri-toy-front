@@ -30,6 +30,9 @@ jobs:
       - name: Run lint
         run: npm run lint
 
+      - name: Run test
+        run: npm run test
+
       - name: smoke test Toy Front End
         env:
           BROWSER: chrome-headless
