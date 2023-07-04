@@ -1,3 +1,5 @@
 # Dependency directories
 node_modules/
 dist
+.aws-sam/
+coverage/
