@@ -9,7 +9,7 @@ RUN npm install
 
 COPY . ./
 
-RUN #npm build
+RUN npm build
 
 CMD npm run dev
 
