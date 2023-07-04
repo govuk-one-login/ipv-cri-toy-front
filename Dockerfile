@@ -6,7 +6,7 @@ COPY package.json package-lock.json ./
 COPY /src ./src
 
 RUN npm install
-#RUN npm build
+RUN npm build
 
 RUN npm prune
 
@@ -19,7 +19,7 @@ WORKDIR /app
 
 # Copy in compile assets and deps from build container
 COPY --from=builder /app/node_modules ./node_modules
-#COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/package.json ./
 COPY --from=builder /app/package-lock.json ./
 COPY --from=builder /app/src ./src
