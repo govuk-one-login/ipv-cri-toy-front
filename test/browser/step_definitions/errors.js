@@ -1,15 +1,21 @@
-const { Given, When, Then } = require("@cucumber/cucumber");
-
+const { When, Then, Given } = require("@cucumber/cucumber");
 const { expect } = require("chai");
+const ErrorPage = require("../pages/error");
 
-const { ErrorPage } = require("../pages/error");
+Given('A user is on the system', function () {
+});
 
-When("there is an immediate error", () => {});
+Given('they have started the toy journey', function () {
+});
+
+When("there is an immediate error", async function () {
+});
 
 Then("they should see the unrecoverable error page", async function () {
-  const errorPage = new ErrorPage(this.page);
+  console.log(this.page)
+  this.errorPage = new ErrorPage(this.page);
 
-  const errorTitle = await errorPage.getErrorTitle();
+  const errorTitle = await this.errorPage.getErrorTitle();
 
-  expect(errorTitle).to.equal(errorPage.getSomethingWentWrongMessage());
+  expect(errorTitle).to.equal(this.errorPage.getSomethingWentWrongMessage());
 });
