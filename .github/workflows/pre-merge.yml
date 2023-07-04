@@ -36,4 +36,4 @@ jobs:
       - name: smoke test Toy Front End
         env:
           BROWSER: chrome-headless
-        run: npm run test:browser
+        run: npm run test:browser:ci
