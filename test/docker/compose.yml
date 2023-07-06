@@ -6,6 +6,9 @@ services:
       - "../imposter:/opt/imposter/config"
     ports:
       - "8010:8080"
+    networks:
+      - mynetwork
+
   #  core-stub:
   #    image: ghcr.io/alphagov/di/di-ipv-core-stub:latest
   #    environment:
@@ -32,6 +35,8 @@ services:
       NODE_ENV: development
     ports:
       - "5010:5010"
+    networks:
+      - mynetwork
     depends_on:
       - mocks
     #      - core-stub
@@ -43,8 +48,19 @@ services:
       dockerfile: docker/Dockerfile
     environment:
       MOCK_API: true
-      WEBSITE_HOST: http://172.17.0.1:5010
+      WEBSITE_HOST: http://172.20.0.3:5010
     depends_on:
       - web
+    networks:
+      - mynetwork
 #      volumes:
 #        -  ../browser:/cucumber/test/browser
+
+networks:
+  mynetwork:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/16
+
