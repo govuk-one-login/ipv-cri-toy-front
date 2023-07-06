@@ -11,6 +11,7 @@ COPY . ./
 
 RUN npm run build
 
+RUN apk --update --no-cache add curl
 CMD npm run dev
 
 EXPOSE $PORT

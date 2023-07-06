@@ -37,11 +37,19 @@ services:
       - "5010:5010"
     networks:
       - mynetwork
+    healthcheck:
+      test: ["CMD", "curl", "http://localhost:5010/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+
     depends_on:
       - mocks
     #      - core-stub
     links:
       - mocks
+
   cucumber:
     build:
       context: ../
@@ -50,7 +58,8 @@ services:
       MOCK_API: true
       WEBSITE_HOST: http://172.20.0.3:5010
     depends_on:
-      - web
+      web:
+        condition: service_healthy
     networks:
       - mynetwork
 #      volumes:
