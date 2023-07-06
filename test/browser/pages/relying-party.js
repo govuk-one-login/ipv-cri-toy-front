@@ -8,9 +8,8 @@ module.exports = class PlaywrightDevPage {
   }
 
   async goto() {
-    const websiteHost = process.env.WEBSITE_HOST || "http://localhost:5050";
+    const websiteHost = process.env.WEBSITE_HOST || "http://localhost:5010";
     this.startingUrl = `${websiteHost}/oauth2/authorize?request=lorem&client_id=${this.clientId}`;
-
     await this.page.goto(this.startingUrl);
   }
 

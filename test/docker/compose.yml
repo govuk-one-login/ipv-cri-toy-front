@@ -42,7 +42,8 @@ services:
       context: ../
       dockerfile: docker/Dockerfile
     environment:
-      WEBSITE_HOST: http://172.17.0.1:8010
+      MOCK_API: true
+      WEBSITE_HOST: http://172.17.0.1:5010
     depends_on:
       - web
 #      volumes:
