@@ -90,12 +90,7 @@ setI18n({
   },
 });
 
-app.get("nunjucks").addGlobal("getContext", function () {
-  return {
-    keys: Object.keys(this.ctx),
-    ctx: this.ctx.ctx,
-  };
-});
+app.set("view engine", "njk");
 
 setAPIConfig({
   app,
