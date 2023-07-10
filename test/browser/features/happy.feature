@@ -8,4 +8,4 @@ Feature: Happy path
     When they have started the toy journey
     Then they should see the intro page
     And they continue to choose favourite
-#    Then they should see the choose favourite page
+    Then they should see the choose favourite page
