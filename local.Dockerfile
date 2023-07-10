@@ -1,6 +1,6 @@
 FROM node:18.12.1-alpine
 
-ENV PORT 5050
+ENV PORT 5010
 
 WORKDIR /app
 
@@ -9,9 +9,9 @@ RUN npm install
 
 COPY . ./
 
+RUN apk --update --no-cache add curl
 RUN npm run build
 
-RUN apk --update --no-cache add curl
 CMD npm run dev
 
 EXPOSE $PORT

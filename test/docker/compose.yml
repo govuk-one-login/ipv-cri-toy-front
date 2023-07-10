@@ -37,12 +37,12 @@ services:
       - "5010:5010"
     networks:
       - mynetwork
-    healthcheck:
-      test: ["CMD", "curl", "http://localhost:5010/health"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
-      start_period: 5s
+#    healthcheck:
+#      test: ["CMD", "curl","-I", "http://127.20.0.3:5010"]
+#      interval: 10s
+#      timeout: 5s
+#      retries: 3
+#      start_period: 5s
 
     depends_on:
       - mocks
@@ -58,8 +58,8 @@ services:
       MOCK_API: true
       WEBSITE_HOST: http://172.20.0.3:5010
     depends_on:
-      web:
-        condition: service_healthy
+      - web
+#        condition: service_healthy
     networks:
       - mynetwork
 #      volumes:
@@ -72,4 +72,3 @@ networks:
       driver: default
       config:
         - subnet: 172.20.0.0/16
-
