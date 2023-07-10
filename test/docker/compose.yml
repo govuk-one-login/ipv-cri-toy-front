@@ -7,7 +7,7 @@ services:
     ports:
       - "8010:8080"
     networks:
-      - mynetwork
+      - toy-network
 
   #  core-stub:
   #    image: ghcr.io/alphagov/di/di-ipv-core-stub:latest
@@ -31,14 +31,14 @@ services:
       REDIS_SESSION_URL: db
       API_BASE_URL: http://172.17.0.1:8010
       #      API_BASE_URL: http://mocks:8010
-      PORT: 5010
+      PORT: 5050
       NODE_ENV: development
     ports:
-      - "5010:5010"
+      - "5050:5050"
     networks:
-      - mynetwork
+      - toy-network
 #    healthcheck:
-#      test: ["CMD", "curl","-I", "http://127.20.0.3:5010"]
+#      test: ["CMD", "curl","-I", "http://127.20.0.3:5050"]
 #      interval: 10s
 #      timeout: 5s
 #      retries: 3
@@ -56,17 +56,17 @@ services:
       dockerfile: docker/Dockerfile
     environment:
       MOCK_API: true
-      WEBSITE_HOST: http://172.20.0.3:5010
+      WEBSITE_HOST: http://172.20.0.3:5050
     depends_on:
       - web
 #        condition: service_healthy
     networks:
-      - mynetwork
+      - toy-network
 #      volumes:
 #        -  ../browser:/cucumber/test/browser
 
 networks:
-  mynetwork:
+  toy-network:
     driver: bridge
     ipam:
       driver: default
