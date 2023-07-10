@@ -76,6 +76,8 @@ resources:
           value: "spinning-top"
         - jsonPath: $.toy
           value: "train-set"
+    response:
+      statusCode: 200
 
   - method: POST
     path: /favourite
