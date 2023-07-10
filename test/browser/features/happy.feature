@@ -9,3 +9,5 @@ Feature: Happy path
     Then they should see the intro page
     And they continue to choose favourite
     Then they should see the choose favourite page
+    When they choose a favourite toy
+    And they continue from choose favourite
