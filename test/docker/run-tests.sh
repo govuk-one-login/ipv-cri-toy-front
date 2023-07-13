@@ -1,1 +1,1 @@
-docker compose run cucumber npm run test:browser:local
+docker compose run cucumber npm run test:browser
