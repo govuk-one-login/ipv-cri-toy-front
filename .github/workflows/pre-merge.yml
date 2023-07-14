@@ -27,7 +27,16 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: Start Docker
+        run: docker compose up web mocks --detach
+        working-directory: test/docker
+
       - name: smoke test Toy Front End
         env:
           BROWSER: chrome-headless
-        run: npm run test:browser:ci
+        run: npm run test:browser
+
+      - name: Stop Docker
+        run: docker compose down
+        working-directory: test/docker
+        if: ${{ always() }}
