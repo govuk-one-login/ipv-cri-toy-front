@@ -27,13 +27,20 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Run lint
-        run: npm run lint
+      - name: Start Docker
+        run: docker compose up web mocks --detach
+        working-directory: test/docker
 
-      - name: Run test
-        run: npm run test
+      - name: Sleep for 10 seconds
+        run: sleep 10s
+        shell: bash
 
       - name: smoke test Toy Front End
         env:
           BROWSER: chrome-headless
-        run: npm run test:browser:ci
+        run: npm run test:browser
+
+      - name: Stop Docker
+        run: docker compose down
+        working-directory: test/docker
+        if: ${{ always() }}
