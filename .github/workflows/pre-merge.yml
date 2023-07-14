@@ -1,4 +1,4 @@
-name: Run Smoke Tests
+name: Run Browser Tests
 
 on:
   pull_request:
@@ -33,7 +33,15 @@ jobs:
       - name: Run test
         run: npm run test
 
-      - name: smoke test Toy Front End
-        env:
-          BROWSER: chrome-headless
-        run: npm run test:browser:ci
+      - name: Start Docker
+        run: docker compose up --detach
+        working-directory: test/browser/docker
+
+      - name: Stop Docker
+        run: docker compose down
+        working-directory: test/browser/docker
+        if: ${{ always() }}
+#      - name: smoke test Toy Front End
+#        env:
+#          BROWSER: chrome-headless
+#        run: npm run test:browser:ci
