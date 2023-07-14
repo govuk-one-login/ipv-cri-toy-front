@@ -37,12 +37,12 @@ services:
       - "5050:5050"
     networks:
       - toy-network
-#    healthcheck:
-#      test: ["CMD", "curl","-I", "http://127.20.0.3:5050"]
-#      interval: 10s
-#      timeout: 5s
-#      retries: 3
-#      start_period: 5s
+    #    healthcheck:
+    #      test: ["CMD", "curl","-I", "http://127.20.0.3:5050"]
+    #      interval: 10s
+    #      timeout: 5s
+    #      retries: 3
+    #      start_period: 5s
 
     depends_on:
       - mocks
@@ -59,7 +59,7 @@ services:
       WEBSITE_HOST: http://172.20.0.3:5050
     depends_on:
       - web
-#        condition: service_healthy
+    #        condition: service_healthy
     networks:
       - toy-network
 #      volumes:
