@@ -11,3 +11,4 @@ Feature: Happy path
     Then they should see the choose favourite page
     When they choose a favourite toy
     And they continue from choose favourite
+    Then they should be redirected as a success
