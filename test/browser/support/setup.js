@@ -43,7 +43,6 @@ Before(async function ({ pickle } = {}) {
   const header = tag?.name.substring(10);
   console.log(header);
   this.TESTING_CLIENT_ID = header;
-
 });
 
 // Create a new test context and page per scenario

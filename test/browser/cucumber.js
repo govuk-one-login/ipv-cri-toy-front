@@ -5,7 +5,7 @@ module.exports = {
     require: [
       "./test/browser/support/**/*.js",
       "./test/browser/step_definitions/**/*.js",
-      "./test/browser/pages/*.js"
+      "./test/browser/pages/*.js",
     ],
   },
 };
