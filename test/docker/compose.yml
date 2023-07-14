@@ -2,9 +2,6 @@ version: "3.9"
 services:
   mocks:
     image: outofcoffee/imposter:3.25.1
-
-    networks:
-      - toy-network
     volumes:
       - "../imposter:/opt/imposter/config"
     ports:
@@ -20,14 +17,11 @@ services:
       #      API_BASE_URL: http://mocks:8050
       PORT: 5050
       NODE_ENV: development
-    networks:
-      - toy-network
     ports:
       - "5050:5050"
 
     depends_on:
       - mocks
-    #      - core-stub
     links:
       - mocks
 
@@ -38,13 +32,7 @@ services:
     environment:
       MOCK_API: true
       WEBSITE_HOST: http://docker-web-1:5050
-    networks:
-      - toy-network
     depends_on:
       - web
     volumes:
       - ./reports:/reports
-    #        condition: service_healthy
-
-networks:
-  toy-network:
