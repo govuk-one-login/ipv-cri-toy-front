@@ -13,9 +13,12 @@ class ConfirmController extends BaseController {
 
       const favourite = req.sessionModel.get("toy");
 
-      await req.axios.post(`${FAVOURITE}`, { toy: favourite }, { headers });
-
-      callback();
+      try {
+        await req.axios.post(`${FAVOURITE}`, { toy: favourite }, { headers });
+        callback();
+      } catch {
+        callback();
+      }
     });
   }
 }

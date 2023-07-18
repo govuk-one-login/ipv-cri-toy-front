@@ -4,11 +4,19 @@ module.exports = class PlaywrightDevPage {
    */
   constructor(page) {
     this.page = page;
-    this.path = "/toy/choose-favourite";
+    this.path = "/choose-favourite";
   }
 
   async continue() {
     await this.page.click("#continue");
+  }
+
+  async selectToy(toyName) {
+    await this.page.locator(getToyId(toyName)).check();
+  }
+
+  toyIsSelected(toyName) {
+    return this.page.locator(getToyId(toyName)).isChecked();
   }
 
   isCurrentPage() {
@@ -16,8 +24,16 @@ module.exports = class PlaywrightDevPage {
 
     return pathname == this.path;
   }
-
-  async answerTrainSet() {
-    await this.page.locator(`#toy-trainset`).first().check();
-  }
 };
+
+//TODO: Ids for the radio fields are auto generated and is incorrect for the first item.
+function getToyId(toyName) {
+  const ids = {
+    "dolls-house": "#toy",
+    "jigsaw-puzzle": "#toy-jigsawpuzzle",
+    "spinning-top": "#toy-spinningtop",
+    "train-set": "#toy-trainset",
+  };
+
+  return ids[toyName];
+}

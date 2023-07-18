@@ -65,6 +65,15 @@ resources:
   - method: POST
     path: /favourite
     requestHeaders:
+      session-id: "toy-authorization-error"
+    response:
+      template: true
+      statusCode: 500
+      content: '{"redirect_uri": "http://example.net", "oauth_error": {"error_description": "gateway", "error": "server_error"}}'
+
+  - method: POST
+    path: /favourite
+    requestHeaders:
       session-id: "toy-success"
     requestBody:
       anyOf:
