@@ -9,6 +9,6 @@ Feature: Error handling
     Then they should see the intro page
     And they continue to choose favourite
     Then they should see the choose favourite page
-    When they choose "spinning-top"
-    And they continue
+    When they choose "spinning-top" as their favourite toy
+    And they continue from choose favourite
     Then they should be redirected as an error with a description "gateway"

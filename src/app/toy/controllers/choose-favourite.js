@@ -8,13 +8,14 @@ const {
 
 class ConfirmController extends BaseController {
   async saveValues(req, res, callback) {
-    super.saveValues(req, res, async () => {
+    await super.saveValues(req, res, async () => {
       const headers = { "session-id": req.session.tokenId };
 
-      const favourite = req.sessionModel.get("favourite");
+      const favourite = req.sessionModel.get("toy");
 
       try {
         await req.axios.post(`${FAVOURITE}`, { toy: favourite }, { headers });
+        callback();
       } catch {
         callback();
       }

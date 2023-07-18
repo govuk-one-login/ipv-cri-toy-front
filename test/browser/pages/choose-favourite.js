@@ -11,12 +11,12 @@ module.exports = class PlaywrightDevPage {
     await this.page.click("#continue");
   }
 
-  async chooseToy(toyName) {
-    await this.page.locator(getFavourtieId(toyName)).check();
+  async selectToy(toyName) {
+    await this.page.locator(getToyId(toyName)).check();
   }
 
   toyIsSelected(toyName) {
-    return this.page.locator(getFavourtieId(toyName)).isChecked();
+    return this.page.locator(getToyId(toyName)).isChecked();
   }
 
   isCurrentPage() {
@@ -24,10 +24,11 @@ module.exports = class PlaywrightDevPage {
 
     return pathname == this.path;
   }
+
 };
 
 //TODO: Ids for the radio fields are auto generated and is incorrect for the first item.
-function getFavourtieId(toyName) {
+function getToyId(toyName) {
   const ids = {
     "dolls-house": "#toy",
     "jigsaw-puzzle": "#toy-jigsawpuzzle",

@@ -8,14 +8,13 @@ Then(/they should see the choose favourite page$/, async function () {
   expect(chooseFavouritePage.isCurrentPage()).to.be.true;
 });
 
-Then("they choose {string}", async function (toyName) {
+Then("they choose {string} as their favourite toy", async function (toyName) {
   const chooseFavouritePage = new ChooseFavouritePage(this.page);
-
-  await chooseFavouritePage.chooseToy(toyName);
+  await chooseFavouritePage.selectToy(toyName);
   expect(chooseFavouritePage.toyIsSelected(toyName));
 });
 
-Then("they continue", async function () {
+Then("they continue from choose favourite", async function () {
   const chooseFavouritePage = new ChooseFavouritePage(this.page);
   await chooseFavouritePage.continue();
 });
