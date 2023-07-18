@@ -16,4 +16,8 @@ module.exports = class PlaywrightDevPage {
 
     return pathname == this.path;
   }
+
+  async answerTrainSet() {
+    await this.page.locator(`#toy-trainset`).first().check();
+  }
 };

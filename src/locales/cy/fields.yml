@@ -5,21 +5,17 @@ toy:
   legend: ""
   label: ""
   items:
-    dollshouse:
+    dolls-house:
       label: "Ty dol"
-      value: "dolls-house"
       reveal: ""
-    jigsawpuzzle:
+    jigsaw-puzzle:
       label: "Pos jig-so"
-      value: "jigsaw-puzzle"
       reveal: ""
-    spinningtop:
+    spinning-top:
       label: "Top Troelli"
-      value: "spinning-top"
       reveal: ""
-    trainset:
+    train-set:
       label: "Set trên"
-      value: "train-set"
       reveal: ""
   validation:
     default: Dewiswch hoff degan os gwelwch yn dda

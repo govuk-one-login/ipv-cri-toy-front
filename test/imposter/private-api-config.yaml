@@ -78,6 +78,7 @@ resources:
           value: "train-set"
     response:
       statusCode: 200
+      content: "{}"
 
   - method: POST
     path: /favourite

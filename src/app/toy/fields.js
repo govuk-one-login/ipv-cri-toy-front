@@ -1,7 +1,7 @@
 module.exports = {
   toy: {
     type: "radios",
-    items: ["dollshouse", "jigsawpuzzle", "spinningtop", "trainset"],
+    items: ["dolls-house", "jigsaw-puzzle", "spinning-top", "train-set"],
     validate: ["required"],
   },
 };
