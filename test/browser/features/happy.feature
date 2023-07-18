@@ -7,7 +7,7 @@ Feature: Happy path
     Given Happy Harriet is using the system
     When they have started the toy journey
     Then they should see the intro page
-    And they continue to choose favourite
+    And they continue from intro
     Then they should see the choose favourite page
     When they choose "train-set" as their favourite toy
     And they continue from choose favourite

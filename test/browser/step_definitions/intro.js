@@ -8,7 +8,7 @@ Then(/they should see the intro page$/, async function () {
   expect(introPage.isCurrentPage()).to.be.true;
 });
 
-Then("they continue to choose favourite", async function () {
+Then("they continue from intro", async function () {
   const introPage = new IntroPage(this.page);
   await introPage.continue();
 });
