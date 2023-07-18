@@ -12,7 +12,7 @@ module.exports = {
   APP: {
     BASE_URL: process.env.EXTERNAL_WEBSITE_HOST || "http://localhost:5050",
     PATHS: {
-      TOY: "/toy/",
+      TOY: "/",
     },
     ANALYTICS: {
       ID: process.env.GTM_ID,
