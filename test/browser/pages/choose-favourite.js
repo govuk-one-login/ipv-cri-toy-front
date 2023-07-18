@@ -4,7 +4,7 @@ module.exports = class PlaywrightDevPage {
    */
   constructor(page) {
     this.page = page;
-    this.path = "/choose-favourite";
+    this.path = "/toy/choose-favourite";
   }
 
   async continue() {
