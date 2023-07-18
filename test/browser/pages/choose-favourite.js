@@ -24,7 +24,6 @@ module.exports = class PlaywrightDevPage {
 
     return pathname == this.path;
   }
-
 };
 
 //TODO: Ids for the radio fields are auto generated and is incorrect for the first item.
