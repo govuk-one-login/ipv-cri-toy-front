@@ -1,4 +1,4 @@
-name: Run Smoke Tests
+name: Run Browser Tests
 
 on:
   pull_request:
