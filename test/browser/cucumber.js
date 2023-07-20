@@ -1,11 +1,11 @@
 module.exports = {
   default: {
     publishQuiet: true,
-    paths: ["./test/browser/features/**/**.feature"],
+    paths: ["./features/**/**.feature"],
     require: [
-      "./test/browser/support/**/*.js",
-      "./test/browser/step_definitions/**/*.js",
-      "./test/browser/pages/*.js",
+      "./support/**/*.js",
+      "./step_definitions/**/*.js",
+      "./pages/*.js",
     ],
   },
 };
