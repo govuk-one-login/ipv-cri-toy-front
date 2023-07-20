@@ -32,15 +32,19 @@ jobs:
         run: sleep 10s
         shell: bash
 
-      - name: Install Dependencies
-        run: npm install
-        working-directory: test/browser
+      - name: Run Cucumber tests
+        run: docker compose up cucumber
+        working-directory: test/docker
 
-      - name: smoke test Toy Front End
-        env:
-          BROWSER: chrome-headless
-        working-directory: test/browser
-        run: npm run test:browser
+      #      - name: Install Dependencies
+      #        run: npm install
+      #        working-directory: test/browser
+
+      #      - name: smoke test Toy Front End
+      #        env:
+      #          BROWSER: chrome-headless
+      #        working-directory: test/browser
+      #        run: npm run test:browser
 
       - name: Stop Docker
         run: docker compose down
