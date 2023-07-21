@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - feat/deploy-assets-to-cdn
 jobs:
   development:
     runs-on: ubuntu-latest
@@ -11,7 +12,9 @@ jobs:
       matrix:
         include:
           - environment: DEV
+            CDN_ENABLED: "true"
           - environment: BUILD
+            CDN_ENABLED: "false"
     name: ${{ matrix.environment }} docker build and push
     env:
       AWS_REGION: eu-west-2
@@ -19,6 +22,19 @@ jobs:
       id-token: write
       contents: read
     steps:
+      - name: Set up AWS creds #push assets to S3
+        uses: aws-actions/configure-aws-credentials@v2
+        if: ${{ matrix.CDN_ENABLED  == 'true' }}
+        with:
+          role-to-assume: ${{ secrets.UPLOAD_ASSETS_GH_ACTIONS_ROLE_ARN }}
+          aws-region: eu-west-2
+
+      - name: yarn build assets, zip and sign
+        uses: alphagov/di-github-actions/upload-assets@main
+        with:
+          zip-signing-key-arn: ${{ secrets.UPLOAD_ASSETS_ZIP_SIGNING_KEY }}
+          stack-name: "core-front"
+          destination-bucket-name: ${{ secrets.UPLOAD_ASSETS_ARTIFACT_SOURCE_BUCKET_NAME }}
       - name: "Push signed image to ECR, updated SAM template with image then upload it to the S3 Artifact Bucket"
         uses: alphagov/di-devplatform-upload-action-ecr@1.0.3
         with:
