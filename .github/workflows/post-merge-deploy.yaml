@@ -39,7 +39,7 @@ jobs:
         uses: alphagov/di-github-actions/upload-assets@main
         with:
           zip-signing-key-arn: ${{ secrets.UPLOAD_ASSETS_ZIP_SIGNING_KEY }}
-          stack-name: "core-front"
+          stack-name: "toy-cri"
           destination-bucket-name: ${{ secrets.UPLOAD_ASSETS_ARTIFACT_SOURCE_BUCKET_NAME }}
       - name: "Push signed image to ECR, updated SAM template with image then upload it to the S3 Artifact Bucket"
         uses: alphagov/di-devplatform-upload-action-ecr@1.0.3
