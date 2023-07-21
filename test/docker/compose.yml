@@ -5,7 +5,8 @@ services:
     volumes:
       - "../imposter:/opt/imposter/config"
     ports:
-      - "8080:8080"
+      - "8050:8080"
+    network_mode: "host"
 
   web:
     build:
@@ -13,26 +14,23 @@ services:
       dockerfile: local.Dockerfile
     environment:
       REDIS_SESSION_URL: db
-      API_BASE_URL: http://docker-mocks-1:8080
-      #      API_BASE_URL: http://mocks:8050
+      API_BASE_URL: http://localhost:8080
       PORT: 5050
       NODE_ENV: development
     ports:
       - "5050:5050"
-
     depends_on:
       - mocks
-    links:
-      - mocks
+    network_mode: "host"
 
   cucumber:
     build:
-      context: ../
-      dockerfile: docker/Dockerfile
+      context: ../browser
+      dockerfile: Dockerfile
     environment:
       MOCK_API: true
-      WEBSITE_HOST: http://docker-web-1:5050
-    depends_on:
-      - web
+      GITHUB_ACTIONS: true
+      WEBSITE_HOST: http://localhost:5050
     volumes:
       - ./reports:/reports
+    network_mode: "host"

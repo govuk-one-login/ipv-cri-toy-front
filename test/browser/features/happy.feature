@@ -2,7 +2,7 @@ Feature: Happy path
 
   Successful journey through the system and back to the RP
 
-  @mock-api:toy-success @wip
+  @mock-api:toy-success
   Scenario: Toy Happy Path
     Given Happy Harriet is using the system
     When they have started the toy journey

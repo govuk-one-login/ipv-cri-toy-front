@@ -56,6 +56,7 @@ const helmetConfig = require("di-ipv-cri-common-express/src/lib/helmet");
 const { app, router } = setup({
   config: { APP_ROOT: __dirname },
   port: PORT,
+  host: "0.0.0.0",
   logs: loggerConfig,
   session: sessionConfig,
   helmet: helmetConfig,

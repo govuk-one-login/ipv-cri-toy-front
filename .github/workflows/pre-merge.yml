@@ -24,9 +24,6 @@ jobs:
         with:
           node-version: "18.x"
 
-      - name: Install Dependencies
-        run: npm install
-
       - name: Start Docker
         run: docker compose up web mocks --detach
         working-directory: test/docker
@@ -35,10 +32,19 @@ jobs:
         run: sleep 10s
         shell: bash
 
-      - name: smoke test Toy Front End
-        env:
-          BROWSER: chrome-headless
-        run: npm run test:browser
+      - name: Run Cucumber tests
+        run: docker compose up cucumber
+        working-directory: test/docker
+
+      #      - name: Install Dependencies
+      #        run: npm install
+      #        working-directory: test/browser
+
+      #      - name: smoke test Toy Front End
+      #        env:
+      #          BROWSER: chrome-headless
+      #        working-directory: test/browser
+      #        run: npm run test:browser
 
       - name: Stop Docker
         run: docker compose down
