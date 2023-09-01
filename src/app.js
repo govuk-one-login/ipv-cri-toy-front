@@ -16,6 +16,8 @@ const { setAPIConfig, setOAuthPaths } = require("./lib/settings");
 const { setGTM } = require("di-ipv-cri-common-express/src/lib/settings");
 const { getGTM } = require("di-ipv-cri-common-express/src/lib/locals");
 const { setI18n } = require("di-ipv-cri-common-express/src/lib/i18next");
+const { setAssets } = require("di-ipv-cri-common-express/src/lib/settings");
+const { getAssets } = require("di-ipv-cri-common-express/src/lib/locals");
 
 const {
   API,
@@ -109,6 +111,14 @@ setGTM({
 });
 
 router.use(getGTM);
+
+setAssets({
+  app,
+  path: APP.ASSETS.PATH,
+  domain: APP.ASSETS.DOMAIN,
+});
+
+router.use(getAssets);
 
 router.use(setScenarioHeaders);
 router.use(setAxiosDefaults);

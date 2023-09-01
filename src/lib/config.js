@@ -18,6 +18,10 @@ module.exports = {
       ID: process.env.GTM_ID,
       DOMAIN: process.env.ANALYTICS_DOMAIN || "localhost",
     },
+    ASSETS: {
+      PATH: process.env.ASSETS_PATH,
+      DOMAIN: process.env.ASSETS_DOMAIN,
+    },
   },
   PORT: process.env.PORT || 5050,
   SESSION_SECRET: process.env.SESSION_SECRET,

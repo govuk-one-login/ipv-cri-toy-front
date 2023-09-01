@@ -18,7 +18,7 @@ Parameters:
   Environment:
     Description: The name of the environment to deploy to.
     Type: String
-    AllowedPattern: ((production)|(integration)|(staging)|(build)|(dev))
+    AllowedPattern: ((production)|(integration)|(staging)|(build)|(dev)|(dev.*))
   VpcStackName:
     Description: >
       The name of the stack that defines the VPC in which this container will
@@ -290,6 +290,10 @@ Resources:
                   "account.gov.uk",
                   !Sub "${Environment}.account.gov.uk",
                 ]
+            - Name: ASSETS_PATH
+              Value: !If [ IsNotDevelopment, !If [ IsProduction, "", "https://build.assets.account.gov.uk/toy-cri"], "" ]
+            - Name: ASSETS_DOMAIN
+              Value: !If [ IsNotDevelopment, !If [ IsProduction, "", "https://build.assets.account.gov.uk" ], "" ]
           PortMappings:
             - ContainerPort: 8080
               Protocol: tcp
