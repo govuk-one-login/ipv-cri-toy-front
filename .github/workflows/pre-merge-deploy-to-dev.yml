@@ -6,7 +6,7 @@ on:
 
 jobs:
 
-  run-checks:
+  # run-checks:
     # uses: ./.github/workflows/checks.yml
 
   check-i18n:
