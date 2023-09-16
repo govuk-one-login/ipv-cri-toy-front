@@ -68,9 +68,9 @@ jobs:
 
 
   deploy-to-dev:
+    needs: [check-i18n, pre-commit-checks, unit-tests]
     runs-on: ubuntu-latest
     timeout-minutes: 10
-
     name: deploy to dev
     env:
       AWS_REGION: eu-west-2
