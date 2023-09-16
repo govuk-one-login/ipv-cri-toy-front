@@ -6,8 +6,6 @@ on:
 
 jobs:
 
-  # run-checks:
-    # uses: ./.github/workflows/checks.yml
 
   check-i18n:
     runs-on: ubuntu-latest
@@ -72,9 +70,6 @@ jobs:
   deploy-to-dev:
     runs-on: ubuntu-latest
     timeout-minutes: 10
-
-  development:
-    runs-on: ubuntu-latest
 
     name: deploy to dev
     env:
