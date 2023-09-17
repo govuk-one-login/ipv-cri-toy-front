@@ -2,16 +2,13 @@ name: Pre merge deploy to dev
 on:
   push:
     branches-ignore:
-        - main
+      - main
 
 jobs:
-
-
   check-i18n:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -31,7 +28,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
-
       - name: Checkout code
         uses: actions/checkout@v3
 
@@ -40,7 +36,7 @@ jobs:
         with:
           python-version: "3.11.2"
 
-      - name: Run pre-cpmmit checks
+      - name: Run pre-commit checks
         uses: pre-commit/action@v3.0.0
         with:
           extra_args: "--all-files"
@@ -65,7 +61,6 @@ jobs:
 
       - name: Run test
         run: npm run test
-
 
   deploy-to-dev:
     needs: [check-i18n, pre-commit-checks, unit-tests]
