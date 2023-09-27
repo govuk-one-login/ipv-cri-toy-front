@@ -4,9 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "test:browser:local": "wait-on tcp:127.0.0.1:8010 tcp:127.0.0.1:5010 && API_BASE_URL=http://127.0.0.1:8010 MOCK_API=true cucumber-js --config test/browser/cucumber.js --tags \"not @skip\"",
-    "test:browser": "MOCK_API=true cucumber-js --config cucumber.js --tags \"not @skip\""
+    "test:browser": "cucumber-js"
   },
   "author": "",
   "license": "MIT",
