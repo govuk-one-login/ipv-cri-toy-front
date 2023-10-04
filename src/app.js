@@ -17,6 +17,7 @@ const {
   setGTM,
 } = require("@govuk-one-login/di-ipv-cri-common-express/src/lib/settings");
 const {
+  getAssetPath,
   getGTM,
 } = require("@govuk-one-login/di-ipv-cri-common-express/src/lib/locals");
 const {
@@ -117,6 +118,7 @@ setGTM({
 });
 
 router.use(getGTM);
+router.use(getAssetPath);
 
 router.use(setScenarioHeaders);
 router.use(setAxiosDefaults);
