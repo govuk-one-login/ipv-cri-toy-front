@@ -28,6 +28,9 @@ Parameters:
     Description: "The ARN of the permissions boundary to apply when creating IAM roles"
     Type: String
     Default: "none"
+  ApiStackName:
+    Type: String
+    Default: toy-cri-api
 
 Conditions:
   IsNotDevelopment: !Or
@@ -272,8 +275,7 @@ Resources:
             - Name: API_BASE_URL
               Value: !Sub
                 - "https://${APIGatewayId}-${VpceId}.execute-api.${AWS::Region}.amazonaws.com/${Environment}"
-                - APIGatewayId:
-                    Fn::ImportValue: toy-cri-api-PrivateToyApiGatewayId
+                - APIGatewayId: !Sub "{{resolve:ssm:/${ApiStackName}/PrivateApiGatewayId}}"
                   VpceId:
                     Fn::ImportValue: cri-vpc-ExecuteApiGatewayEndpointId
                   Environment: !Ref Environment
