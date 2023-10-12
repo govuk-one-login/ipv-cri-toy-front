@@ -9,5 +9,6 @@ module.exports = {
       "./pages/*.js",
     ],
     tags: "not @skip",
+   format: [`json:${process.env.TEST_REPORT_ABSOLUTE_DIR}/cucumber-report.json`]
   },
 };

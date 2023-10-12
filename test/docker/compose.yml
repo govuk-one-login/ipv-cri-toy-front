@@ -31,6 +31,7 @@ services:
       MOCK_API: true
       GITHUB_ACTIONS: true
       WEBSITE_HOST: http://localhost:5050
+      TEST_REPORT_ABSOLUTE_DIR: "/reports"
     volumes:
-      - ./reports:/reports
+      - ../reports:/reports
     network_mode: "host"
