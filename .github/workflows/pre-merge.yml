@@ -33,7 +33,7 @@ jobs:
         shell: bash
 
       - name: Run Cucumber tests
-        run: docker compose up cucumber
+        run: docker compose up cucumber --exit-code-from cucumber
         working-directory: test/docker
 
       #      - name: Install Dependencies
