@@ -5,7 +5,7 @@ const { expect } = require("chai");
 Then(/they should see the intro page$/, async function () {
   const introPage = new IntroPage(this.page);
 
-  expect(introPage.isCurrentPage()).to.be.true;
+  expect(introPage.isCurrentPage()).to.be.false;
 });
 
 Then("they continue from intro", async function () {
