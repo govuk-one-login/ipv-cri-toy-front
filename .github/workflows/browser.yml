@@ -9,7 +9,7 @@ on:
       - synchronize
 
 jobs:
-  smoke:
+  browser:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -33,18 +33,8 @@ jobs:
         shell: bash
 
       - name: Run Cucumber tests
-        run: docker compose up cucumber
+        run: docker compose up cucumber --exit-code-from cucumber
         working-directory: test/docker
-
-      #      - name: Install Dependencies
-      #        run: npm install
-      #        working-directory: test/browser
-
-      #      - name: smoke test Toy Front End
-      #        env:
-      #          BROWSER: chrome-headless
-      #        working-directory: test/browser
-      #        run: npm run test:browser
 
       - name: Stop Docker
         run: docker compose down
