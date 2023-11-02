@@ -1,6 +1,47 @@
 version: 2
 updates:
+  # GHA
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: daily
+    target-branch: main
+    labels:
+      - dependabot
+      - dependencies
+    commit-message:
+      prefix: BAU
+
+  # Webapp
   - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: daily
+      time: "03:00"
+    allow:
+      - dependency-type: production
+    target-branch: main
+    labels:
+      - dependabot
+      - dependencies
+    commit-message:
+      prefix: BAU
+
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: weekly
+      time: "03:00"
+    allow:
+      - dependency-type: development
+    target-branch: main
+    labels:
+      - dependabot
+      - dependencies
+    commit-message:
+      prefix: BAU
+
+  - package-ecosystem: docker
     directory: "/"
     schedule:
       interval: daily
@@ -11,13 +52,15 @@ updates:
       - dependencies
     ignore:
       - dependency-name: "node"
-        versions: ["17.x", "18.x"]
+        versions: ["19.x", "21.x"]
     commit-message:
       prefix: BAU
-  - package-ecosystem: docker
-    directory: "/"
+
+  # Browser tests
+  - package-ecosystem: "npm"
+    directory: "/test/browser"
     schedule:
-      interval: daily
+      interval: weekly
       time: "03:00"
     target-branch: main
     labels:
@@ -25,13 +68,18 @@ updates:
       - dependencies
     commit-message:
       prefix: BAU
-  - package-ecosystem: "github-actions"
-    directory: "/"
+
+  - package-ecosystem: docker
+    directory: "/test/browser"
     schedule:
       interval: daily
+      time: "03:00"
     target-branch: main
     labels:
       - dependabot
       - dependencies
+    ignore:
+      - dependency-name: "node"
+        versions: ["19.x", "21.x"]
     commit-message:
       prefix: BAU
