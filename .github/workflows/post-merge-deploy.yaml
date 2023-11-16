@@ -28,3 +28,10 @@ jobs:
           template-file: deploy/template.yaml
           role-to-assume-arn: ${{ secrets[format('{0}_{1}', matrix.environment, 'GH_ACTIONS_ROLE_ARN')] }}
           ecr-repo-name: ${{ secrets[format('{0}_{1}', matrix.environment, 'ECR_REPOSITORY')] }}
+
+      - name: Login to GDS Dev Dynatrace Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: khw46367.live.dynatrace.com
+          username: khw46367
+          password: ${{ secrets.DYNATRACE_PAAS_TOKEN }}
