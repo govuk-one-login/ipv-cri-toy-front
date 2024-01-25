@@ -1,3 +1,6 @@
+const { chromium } = require("playwright");
+require("axios");
+
 const {
   Before,
   BeforeAll,
@@ -5,8 +8,6 @@ const {
   After,
   setDefaultTimeout,
 } = require("@cucumber/cucumber");
-const { chromium } = require("playwright");
-const axios = require("axios");
 
 // FIXME This is large due to cold starts
 setDefaultTimeout(30 * 1000);
