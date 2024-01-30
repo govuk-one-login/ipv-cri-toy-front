@@ -3,12 +3,19 @@ module.exports = {
   modulePaths: ["<rootDir>/src"],
   collectCoverageFrom: ["<rootDir>/src/**/*"],
   testMatch: ["<rootDir>/src/**/*.test.js"],
+  coveragePathIgnorePatterns: [
+    "src/assets/.*",
+    "src/app/.*/fields.js",
+    "src/app/.*/steps.js",
+    "src/app/.*/index.js",
+    "src/app.js",
+  ],
   coverageThreshold: {
     global: {
-      statements: 8,
+      statements: 29,
       branches: 0,
-      functions: 40,
-      lines: 8,
+      functions: 50,
+      lines: 29,
     },
   },
 };
