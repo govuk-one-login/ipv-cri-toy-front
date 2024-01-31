@@ -1,6 +1,7 @@
-# Digital Identity Credential Issuer
+# ipv-cri-toy-front
 
-# di-ipv-cri-toy-front
+[![Github Action: Scan repository](https://github.com/govuk-one-login/ipv-cri-toy-front/actions/workflows/scan-repo.yml/badge.svg?branch=main)](https://github.com/govuk-one-login/ipv-cri-toy-front/actions/workflows/scan-repo.yml?query=branch%3Amain)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=ipv-cri-toy-front&metric=coverage)](https://sonarcloud.io/summary/overall?id=ipv-cri-toy-front)
 
 Frontend for the Toy Credential Issuer
 
