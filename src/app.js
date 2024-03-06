@@ -2,6 +2,7 @@ require("express");
 require("express-async-errors");
 
 const path = require("path");
+const fg = require('fast-glob');
 const session = require("express-session");
 const AWS = require("aws-sdk");
 const DynamoDBStore = require("connect-dynamodb")(session);
@@ -119,6 +120,8 @@ setGTM({
   ga4ContainerId: APP.ANALYTICS.GA4_CONTAINER_ID,
   gaTaxonomyLevel2: "",
 });
+
+app.locals.applicationStyleSheet = path.relative('dist/public/stylesheets', fg.sync('dist/public/stylesheets/application.*.css')[0]);
 
 router.use(getGTM);
 router.use(getAssetPath);
