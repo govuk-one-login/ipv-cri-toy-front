@@ -32,3 +32,7 @@ Run `git config --unset-all core.hooksPath` to reset your git hook settings.
 ### Code Owners
 
 This repo has a `CODEOWNERS` file in the root and is configured to require PRs to reviewed by Code Owners.
+
+## Environment Variables
+
+- `LANGUAGE_TOGGLE_DISABLED` - Feature flag to disable Language Toggle, defaulted to `true`
