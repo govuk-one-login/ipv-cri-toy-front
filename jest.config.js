@@ -8,6 +8,7 @@ module.exports = {
     "src/app/.*/fields.js",
     "src/app/.*/steps.js",
     "src/app/.*/index.js",
+    "src/lib/config.js",
     "src/app.js",
   ],
   coverageThreshold: {
