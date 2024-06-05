@@ -153,6 +153,26 @@ Resources:
               - !Sub arn:aws:s3:::${AccessLogsBucket}/toy-front-${Environment}/AWSLogs/${AWS::AccountId}/*
 
   # Private Application Load Balancer
+  NamedLoadBalancer:
+    Type: "AWS::ElasticLoadBalancingV2::LoadBalancer"
+    Properties:
+      Name: !Sub "${AWS::StackName}-${Environment}"
+      Scheme: internal
+      SecurityGroups:
+        - !GetAtt LoadBalancerSG.GroupId
+      Subnets:
+        - Fn::ImportValue: !Sub "${VpcStackName}-PrivateSubnetIdA"
+        - Fn::ImportValue: !Sub "${VpcStackName}-PrivateSubnetIdB"
+      Type: application
+      LoadBalancerAttributes: !If
+        - IsNotDevelopment
+        - - Key: access_logs.s3.enabled
+            Value: true
+          - Key: access_logs.s3.bucket
+            Value: !Ref AccessLogsBucket
+          - Key: access_logs.s3.prefix
+            Value: !Sub toy-front-${Environment}
+        - !Ref AWS::NoValue
   LoadBalancer:
     Type: "AWS::ElasticLoadBalancingV2::LoadBalancer"
     Properties:
@@ -190,6 +210,17 @@ Resources:
         - Key: deregistration_delay.timeout_seconds
           Value: 60
 
+  NamedLoadBalancerListener:
+    Type: "AWS::ElasticLoadBalancingV2::Listener"
+    # checkov:skip=CKV_AWS_2:Certificate generation must be resolved before the listener can use HTTPS.
+    # checkov:skip=CKV_AWS_103:The load balancer cannot use TLS v1.2 until HTTPS is enabled
+    Properties:
+      DefaultActions:
+        - TargetGroupArn: !Ref LoadBalancerListenerTargetGroupECS
+          Type: forward
+      LoadBalancerArn: !Ref NamedLoadBalancer
+      Port: 80
+      Protocol: HTTP
   LoadBalancerListener:
     Type: "AWS::ElasticLoadBalancingV2::Listener"
     # checkov:skip=CKV_AWS_2:Certificate generation must be resolved before the listener can use HTTPS.
@@ -256,7 +287,7 @@ Resources:
         - Key: Environment
           Value: !Sub "${Environment}"
     DependsOn:
-      - LoadBalancerListener
+      - NamedLoadBalancerListener
 
   ECSAccessLogsGroup:
     Type: AWS::Logs::LogGroup
@@ -490,7 +521,7 @@ Resources:
         Fn::ImportValue: !Sub "${VpcStackName}-VpcLinkId"
       ConnectionType: VPC_LINK
       IntegrationMethod: ANY
-      IntegrationUri: !Ref LoadBalancerListener
+      IntegrationUri: !Ref NamedLoadBalancerListener
       PayloadFormatVersion: "1.0"
 
   APIGWRoute:
@@ -656,7 +687,7 @@ Resources:
         - Name: TargetGroup
           Value: !Ref LoadBalancerListenerTargetGroupECS
         - Name: LoadBalancer
-          Value: !Ref LoadBalancer
+          Value: !Ref NamedLoadBalancer
       Period: 60
       EvaluationPeriods: 5
       DatapointsToAlarm: 5
@@ -681,4 +712,4 @@ Outputs:
     Description: The Fargate Front End Load Balancer ARN
     Export:
       Name: !Sub "${AWS::StackName}-LoadBalancer"
-    Value: !Ref LoadBalancer
+    Value: !Ref NamedLoadBalancer
