@@ -3,7 +3,7 @@ require("express-async-errors");
 
 const path = require("path");
 const session = require("express-session");
-const AWS = require("aws-sdk");
+const DynamoDBStore = require("connect-dynamodb")(session);
 const { DynamoDBClient } = require("@aws-sdk/client-dynamodb");
 
 const commonExpress = require("@govuk-one-login/di-ipv-cri-common-express");
