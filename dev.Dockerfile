@@ -1,4 +1,4 @@
-FROM --platform="linux/arm64" arm64v8/node@sha256:b16c4e21f9e9e4d02c226d7b2dde3283fc9315104b66009af546b50f5c7acad4 AS builder
+FROM --platform="linux/arm64" arm64v8/node@sha256:7a62efb65ffafd0f67683db3e74887b085f4f8f1552a8281c371174e932963a6 AS builder
 
 WORKDIR /app
 
@@ -10,7 +10,7 @@ RUN npm run build
 
 RUN npm prune
 
-FROM --platform="linux/arm64" arm64v8/node@sha256:b16c4e21f9e9e4d02c226d7b2dde3283fc9315104b66009af546b50f5c7acad4 AS final
+FROM --platform="linux/arm64" arm64v8/node@sha256:7a62efb65ffafd0f67683db3e74887b085f4f8f1552a8281c371174e932963a6 AS final
 RUN ["apt-get", "update"]
 RUN ["apt-get", "install", "-y", "tini"]
 
