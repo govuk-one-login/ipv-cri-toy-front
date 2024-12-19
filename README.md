@@ -1,3 +1,5 @@
+> Toy CRI has now been decomissioned but it may still serve as a helpful example. Please feel free to take any useful parts from it for future work.
+
 # ipv-cri-toy-front
 
 [![Github Action: Scan repository](https://github.com/govuk-one-login/ipv-cri-toy-front/actions/workflows/scan-repo.yml/badge.svg?branch=main)](https://github.com/govuk-one-login/ipv-cri-toy-front/actions/workflows/scan-repo.yml?query=branch%3Amain)
